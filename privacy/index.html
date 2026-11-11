@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — MeetChat</title>
+<meta name="description" content="MeetChat has no account and no tracking: messages are end-to-end encrypted and only the people in a chat can read them.">
+<link rel="icon" href="../manual/img/icon.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<div class="wrap">
+<nav class="top">
+  <a class="home" href="../"><img src="../manual/img/icon.png" alt="">MeetChat</a>
+  <a href="../manual/">Manual</a>
+  <a href="../support/">Support</a>
+  <a href="../privacy/" aria-current="page">Privacy</a>
+  <a href="../terms/">Terms</a>
+</nav>
+<h1>Privacy Policy</h1>
+<p class="updated">Last updated: 11 November 2026 · applies to MeetChat for iPhone and Android and to this website</p>
+<p>MeetChat is made by Miguel Gonçalves, who also runs the NeedToApp relay server it uses by default. In short: <strong>no account, no ads, no analytics, no tracking.</strong> Your messages are end-to-end encrypted on your phone before they leave it, on every network. Only the people in a chat can read them — not the developer, not the relay, not the radios or phones that pass them on.</p>
+<h2>What stays on your phone</h2>
+<p>Your chats, their keys and your messages (iPhone: Keychain and app storage; Android: app storage, keys locked by the Android Keystore), your name and, if you enter it, your phone number, and the map areas you've viewed. The developer never receives any of this. Deleting the app deletes it.</p>
+<h2>What you share with the people in a chat</h2>
+<p>Only with the people in a chat you've joined (by QR code or invite link), and only sealed with that chat's key: your name and the messages, photos, files, reactions and map pins you send; your location, only when you send it, set your status (OK / Danger / Help) on the map, or turn on Share My Location for that chat (it stops when you turn it off); and your phone number, if you entered it in Settings, so they can text you. Whoever has a chat's QR code or link can join it, so share it only with people you trust.</p>
+<h2>Internet relay</h2>
+<p>With internet on, sealed messages pass through an ntfy relay server. By default it's the developer's NeedToApp server, hosted by Hetzner Online GmbH in Germany (EU). It stores sealed messages for up to 48 hours (photos and files for up to 3 hours) so phones that were offline can catch up, then deletes them; it can't open them. Like any server, it sees the IP address of the connecting phone and the chat's topic name (a code derived from the chat key that says nothing about the chat). These are used only to run the relay and protect it from abuse; server logs are deleted after at most 7 days. You can use ntfy.sh or your own ntfy server instead (⚙︎ Settings → Internet Relay); then that server's policy applies.</p>
+<h2>Other networks</h2>
+<ul>
+  <li><strong>Text message (SMS).</strong> A message you send as an SMS goes through your messages app and your mobile operator, as a link holding the sealed message. Your operator sees the phone numbers involved, as for any text. MeetChat never reads your text messages: you open a MeetChat message by tapping its link.</li>
+  <li><strong>Phones nearby.</strong> Sealed messages pass between phones over Bluetooth and Wi-Fi. Other MeetChat phones can carry them without being able to read them.</li>
+  <li><strong>Meshtastic® radio.</strong> Your chats' sealed messages go over LoRa radio, which anyone nearby can receive but not read. Radio chats are different, by design: they're ordinary Meshtastic channel messages, readable by other Meshtastic radios on that channel (anyone, on the open channel). They aren't end-to-end encrypted like your other chats, and each radio chat says so at the top.</li>
+</ul>
+<h2>Maps</h2>
+<p>Map tiles come from OpenFreeMap (OpenStreetMap data). Your phone asks for the map of the area you look at, so OpenFreeMap sees your IP address and those areas, as with any web map. Your location itself isn't sent to them.</p>
+<h2>Purchases</h2>
+<p>The Full Version is bought through the App Store or Google Play. Apple or Google handle the payment; the app only learns whether the purchase is valid. The developer doesn't receive your payment details.</p>
+<h2>Permissions</h2>
+<p>Location (to share where you are, only as above), Bluetooth and local network (phones nearby and the radio), camera (only to scan a chat's QR code; no picture is kept), notifications (new messages), and on iPhone adding photos to your library (only when you tap Save to Photos). You can refuse any of them; the rest of the app keeps working.</p>
+<h2>This website</h2>
+<p>This website uses no cookies and stores nothing on your device. It has no analytics, no advertising and no embedded content from other sites; the fonts are served from this site. The host receives your IP address as part of delivering the pages and may keep it in its server logs for security.</p>
+<h2>Children</h2>
+<p>MeetChat isn't directed at children under 13 (or the minimum age in your country), and the developer doesn't knowingly process their data.</p>
+<h2>Your rights</h2>
+<p>The only data the developer handles, as the relay operator, is IP addresses and sealed messages in transit, kept briefly as above, on the basis of the legitimate interest in running the service you asked for. You can ask about it or ask for it to be deleted at the address below, and you can complain to your data protection authority (in Portugal, the CNPD).</p>
+<h2>Changes</h2>
+<p>If this policy changes, the new version will be published on this page with a new date.</p>
+<h2>Contact</h2>
+<p>Questions about privacy: <a href="mailto:miguelvirt@gmail.com">miguelvirt@gmail.com</a></p>
+<footer>MeetChat · encrypted chat for when phone networks fail, for iPhone and Android · © 2026 Miguel Gonçalves<br><small>Meshtastic® is a registered trademark of Meshtastic LLC. MeetChat is not affiliated with or endorsed by the Meshtastic project.</small></footer>
+</div>
+</body>
+</html>

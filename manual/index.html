@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MeetChat Manual</title>
+
+
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+/* Layout: a field manual — sticky chapter rail on the left, reading column with phone screenshots set beside the steps. */
+:root {
+  --bg: #f3f8f6;
+  --surface: #ffffff;
+  --ink: #0c1a16;
+  --muted: #4f645d;
+  --line: #d3e3dd;
+  --neon: #00806a;
+  --neon-soft: #dcf5ee;
+  --ok: #138a4b;
+  --warn: #b35c00;
+  --bad: #c62828;
+  --display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #07100e; --surface: #0f1b18; --ink: #e9f7f2; --muted: #9bb8ae; --line: #1f332d;
+    --neon: #46e6b4; --neon-soft: #0d3328; --ok: #42d48a; --warn: #ffad4d; --bad: #ff6b6b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #07100e; --surface: #0f1b18; --ink: #e9f7f2; --muted: #9bb8ae; --line: #1f332d;
+  --neon: #46e6b4; --neon-soft: #0d3328; --ok: #42d48a; --warn: #ffad4d; --bad: #ff6b6b;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 17px/1.6 var(--body); }
+a { color: var(--neon); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--neon); outline-offset: 3px; border-radius: 4px; }
+code, .mono { font-family: var(--mono); font-size: 0.86em; }
+kbd { font: 600 0.82em var(--body); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; padding: 0 6px; background: var(--surface); white-space: nowrap; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; }
+
+/* Masthead */
+header.mast { padding-block: 48px 28px; }
+.brand { display: flex; align-items: center; gap: 16px; }
+.brand img { width: 64px; height: 64px; border-radius: 15px; box-shadow: 0 0 0 1px var(--line), 0 8px 30px -10px var(--neon); }
+.eyebrow { font: 600 13px/1 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); }
+h1 { font: 800 clamp(40px, 7vw, 72px)/0.98 var(--display); letter-spacing: -0.02em; margin: 18px 0 14px; text-wrap: balance; }
+.lede { font-size: 20px; color: var(--muted); max-width: 62ch; margin: 0; }
+
+.tour { margin-block: 30px 10px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.tour video { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; background: #000; display: block; border: 1px solid var(--line); }
+.tour p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* Body: rail + content */
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; padding-block: 30px 80px; }
+nav.rail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); align-self: start; font-size: 15px; }
+nav.rail ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; counter-reset: ch; }
+nav.rail li { counter-increment: ch; }
+nav.rail a { display: flex; gap: 10px; padding: 6px 10px; border-radius: 8px; color: var(--muted); text-decoration: none; }
+nav.rail a::before { content: counter(ch, decimal-leading-zero); font: 500 12px/1.9 var(--mono); color: var(--neon); }
+nav.rail a:hover { background: var(--neon-soft); color: var(--ink); }
+
+main { min-width: 0; }
+section.ch { padding-block: 34px; border-top: 1px solid var(--line); }
+section.ch:first-child { border-top: 0; padding-top: 0; }
+h2 { font: 800 clamp(28px, 4vw, 38px)/1.1 var(--display); letter-spacing: -0.01em; margin: 0 0 6px; text-wrap: balance; }
+h2 .num { font: 500 15px var(--mono); color: var(--neon); display: block; margin-bottom: 8px; letter-spacing: 0; }
+h3 { font: 600 21px/1.3 var(--display); margin: 28px 0 8px; }
+p { margin: 0 0 14px; max-width: 68ch; }
+.intro { color: var(--muted); font-size: 18px; }
+ul, ol.steps { padding-left: 22px; margin: 0 0 16px; max-width: 66ch; }
+li { margin-bottom: 6px; }
+ol.steps li::marker { color: var(--neon); font-weight: 700; }
+
+/* Screen + text pairs */
+.pair { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 32px; align-items: start; margin-block: 18px 8px; }
+.pair.flip { grid-template-columns: 250px minmax(0, 1fr); }
+.pair.flip > figure { order: -1; }
+.shots { display: flex; gap: 16px; flex-wrap: wrap; margin-block: 16px; }
+.shots figure { flex: 1 1 200px; max-width: 250px; }
+figure { margin: 0; }
+figure img { width: 100%; max-width: 100%; display: block; border-radius: 26px; border: 6px solid #10141c; box-shadow: 0 0 0 1px var(--line), 0 18px 40px -24px rgba(0, 40, 90, .55); background: #000; }
+figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin-block: 14px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 15.5px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font: 600 12.5px var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: color-mix(in srgb, var(--neon-soft) 45%, var(--surface)); }
+td:first-child { white-space: nowrap; font-weight: 700; }
+
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: 1px; box-shadow: 0 0 8px currentColor; }
+.dot.ok { background: var(--ok); color: var(--ok); }
+.dot.warn { background: #e8b100; color: #e8b100; }
+.dot.bad { background: var(--bad); color: var(--bad); }
+.dot.off { background: var(--muted); color: transparent; box-shadow: none; }
+
+.note { border-left: 3px solid var(--neon); background: var(--neon-soft); padding: 12px 16px; border-radius: 0 10px 10px 0; margin-block: 16px; max-width: 68ch; }
+.note p:last-child { margin: 0; }
+.note strong { color: var(--ink); }
+
+.dmx { font: 500 13px var(--mono); color: var(--muted); }
+
+footer { border-top: 1px solid var(--line); padding-block: 24px 40px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  nav.rail { position: static; }
+  nav.rail ol { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .pair, .pair.flip { grid-template-columns: minmax(0, 1fr); }
+  .pair > figure, .pair.flip > figure { order: 0; max-width: 250px; }
+}
+.print-only, .print-inline { display: none; }
+
+/* Print / Save as PDF: always light, one column, no player, nothing split across pages. */
+@page { size: A4; margin: 16mm 15mm 18mm; }
+@media print {
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    --bg: #ffffff; --surface: #ffffff; --ink: #111827; --muted: #4b5568; --line: #d5dce6;
+    --neon: #00735f; --neon-soft: #e3f5ef; --ok: #138a4b; --warn: #b35c00; --bad: #c62828;
+    color-scheme: light;
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html { scroll-behavior: auto; }
+  body { font-size: 10.5pt; line-height: 1.5; background: #fff; }
+  .wrap { max-width: none; padding-inline: 0; }
+  header.mast { padding-block: 0 6mm; }
+  h1 { font-size: 34pt; margin: 6mm 0 3mm; }
+  .lede { font-size: 12.5pt; }
+  .tour video, nav.rail { display: none; }
+  .print-only { display: block; }
+  .print-inline { display: inline; }
+  .tour { margin-block: 6mm 0; break-inside: avoid; }
+  .tour img { width: 100%; border-radius: 8px; border: 1px solid var(--line); }
+  .layout { display: block; padding-block: 0; }
+  section.ch { padding-block: 6mm 2mm; border-top: 1px solid var(--line); }
+  section.ch:first-child { border-top: 0; }
+  .dot { width: 8px; height: 8px; box-shadow: none; }
+  h2 { font-size: 22pt; break-inside: avoid; break-after: avoid; }
+  h2 .num { break-after: avoid; }
+  h3 { font-size: 13.5pt; margin-top: 5mm; break-after: avoid; }
+  p, li { orphans: 3; widows: 3; }
+  .intro { font-size: 12pt; }
+  .pair, .pair.flip { grid-template-columns: minmax(0, 1fr) 46mm; gap: 7mm; break-inside: avoid; }
+  .pair.flip { grid-template-columns: 46mm minmax(0, 1fr); }
+  .shots { gap: 6mm; break-inside: avoid; }
+  .shots figure { flex: 0 0 46mm; max-width: 46mm; }
+  figure { break-inside: avoid; }
+  figure img { border-width: 3px; border-radius: 14px; box-shadow: none; }
+  figcaption { font-size: 8.5pt; }
+  .table-wrap { overflow: visible; break-inside: avoid; }
+  table { font-size: 9.5pt; }
+  tr { break-inside: avoid; }
+  .note { break-inside: avoid; }
+  a { color: var(--ink); text-decoration: none; }
+  footer { padding-block: 4mm 0; font-size: 8.5pt; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+nav.top { display: flex; align-items: center; gap: 18px; padding-block: 10px; flex-wrap: wrap; position: sticky; top: 0; z-index: 20; background: var(--bg); }
+nav.top .home { display: flex; align-items: center; gap: 10px; font: 700 17px var(--display); color: var(--ink); text-decoration: none; margin-right: auto; }
+nav.top .home img { width: 26px; height: 26px; border-radius: 7px; }
+nav.top a:not(.home) { color: var(--muted); text-decoration: none; font-size: 15px; }
+nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
+@media print { nav.top { display: none; } }
+</style></head>
+<body>
+<nav class="top wrap">
+  <a class="home" href="../"><img src="img/icon.png" alt="">MeetChat</a>
+  <a href="./" aria-current="page">Manual</a>
+  <a href="../support/">Support</a>
+  <a href="../privacy/">Privacy</a>
+  <a href="../terms/">Terms</a>
+</nav>
+
+<header class="mast wrap">
+  <div class="brand">
+    <img src="img/icon.png" alt="MeetChat app icon: a green neon chat bubble with a padlock">
+    <span class="eyebrow">User manual · iPhone · Encrypted chat</span>
+  </div>
+  <h1>MeetChat Manual</h1>
+  <p class="lede">MeetChat is an encrypted group chat for when the network is down. Messages get through any way they can: as a text message, over the internet, from phone to phone over Bluetooth and Wi-Fi, or over a Meshtastic radio. Whatever the network, only people in the chat can read them.</p>
+
+  <div class="tour">
+    <video controls preload="metadata" poster="img/poster.jpg" src="../media/MeetChat-Tour.mp4"></video>
+    <img class="print-only" src="img/poster.jpg" alt="Opening frame of the MeetChat video tour">
+    <p>Video tour, 2 minutes 35 seconds, narrated. It starts a chat, invites people with a QR code, and sends a message on all four networks. <span class="print-inline">The video file is <code>MeetChat-Tour.mp4</code> in the Docs folder.</span></p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="rail" aria-label="Chapters">
+    <ol>
+      <li><a href="#start">Getting started</a></li>
+      <li><a href="#networks">The four networks</a></li>
+      <li><a href="#chats">Chats and invites</a></li>
+      <li><a href="#encryption">Encryption</a></li>
+      <li><a href="#messages">Sending and reading</a></li>
+      <li><a href="#sms">Text messages</a></li>
+      <li><a href="#nearby">Phones nearby</a></li>
+      <li><a href="#radio">Meshtastic radio</a></li>
+      <li><a href="#internet">Internet relay</a></li>
+      <li><a href="#trouble">Troubleshooting</a></li>
+      <li><a href="#reference">Quick reference</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <!-- 01 -->
+    <section class="ch" id="start">
+      <h2><span class="num">01</span>Getting started</h2>
+      <div class="pair">
+        <div>
+          <p class="intro">Set MeetChat up now, while everything works, and make your chats before you need them. Joining a chat needs the other person’s QR code or invite link, so you can’t join one in the middle of an emergency if you never met.</p>
+          <ol class="steps">
+            <li>Open MeetChat, type your name and tap <strong>Start</strong>. People in your chats see this name above your messages. You can change it later in <strong>Settings</strong>.</li>
+            <li>When iOS asks, allow <strong>Bluetooth</strong> and <strong>Local Network</strong>. Without them MeetChat can’t reach phones nearby or a Meshtastic radio.</li>
+            <li>Start a chat, or join one (chapter 03).</li>
+          </ol>
+          <div class="note"><p><strong>No account, no phone number.</strong> MeetChat has no sign-up and no server of its own. Your name and chats stay on your iPhone.</p></div>
+        </div>
+        <figure>
+          <img src="img/welcome.jpg" alt="Welcome screen: Chat When the Network Is Down, the four networks, a name field and the Start button" loading="lazy">
+          <figcaption>The first screen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="ch" id="networks">
+      <h2><span class="num">02</span>The four networks</h2>
+      <div class="pair">
+        <div>
+          <p class="intro">At the top of the chat list, <strong>Networks</strong> shows the four ways a message can travel and which of them work right now.</p>
+          <p>When you tap <strong>Send</strong>, the message goes out on every network that works at that moment. On networks that aren’t working, it waits and goes out as soon as they are. A message that reaches your iPhone one way is passed on the other ways, so it can jump from the radio to the internet or from the internet to phones nearby.</p>
+          <p><span class="dot ok"></span>Green: working now. <span class="dot warn"></span>Orange: waiting. <span class="dot off"></span>Grey: not in use.</p>
+        </div>
+        <figure>
+          <img src="img/chats.jpg" alt="Chat list: Networks with text messages, internet with the relay working, no MeetChat phones in range, and a Meshtastic radio linked; below, the Family chat with 4 unread" loading="lazy">
+          <figcaption>Networks above your chats. The Family chat has 4 unread messages.</figcaption>
+        </figure>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Network</th><th>Needs</th><th>Reach</th><th>Chapter</th></tr></thead>
+          <tbody>
+            <tr><td>Text messages · SMS</td><td>A mobile signal (no internet). You press Send in Messages yourself.</td><td>Anywhere with a signal</td><td>06</td></tr>
+            <tr><td>Internet</td><td>Wi-Fi or mobile data</td><td>The world</td><td>09</td></tr>
+            <tr><td>Phones nearby</td><td>Nothing: Bluetooth and Wi-Fi, phone to phone</td><td>Tens of metres per hop, further as phones move</td><td>07</td></tr>
+            <tr><td>Meshtastic radio</td><td>A Meshtastic radio linked over Bluetooth</td><td>Kilometres over LoRa</td><td>08</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="ch" id="chats">
+      <h2><span class="num">03</span>Chats and invites</h2>
+      <p class="intro">A chat is a group of people who share one secret key. You can have as many chats as you like, for example family, neighbours and a work team. Each chat has its own key, so people in one chat can’t read another.</p>
+
+      <h3>Start a chat</h3>
+      <div class="pair">
+        <div>
+          <ol class="steps">
+            <li>Tap the pencil (top right), then <strong>New Chat</strong>.</li>
+            <li>Type a name, for example <em>Neighbours</em>, and tap <strong>Create</strong>. A new 256-bit key is made on your iPhone, just for this chat.</li>
+            <li>The invite opens straight away (next step).</li>
+          </ol>
+          <p>The chat name is only a label. Each person can rename their copy in chat info without changing anything for the others.</p>
+        </div>
+        <figure>
+          <img src="img/newchat.jpg" alt="New Chat sheet with the name Neighbours typed in" loading="lazy">
+          <figcaption>New Chat. The key is made when you tap Create.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Invite people</h3>
+      <div class="pair flip">
+        <figure>
+          <img src="img/invite.jpg" alt="Invite screen: a QR code, a safety code, the Send Invite Link button and a warning" loading="lazy">
+          <figcaption>The invite: QR code, safety code and link.</figcaption>
+        </figure>
+        <div>
+          <ol class="steps">
+            <li>Show the <strong>QR code</strong> to the other person. They point the iPhone <strong>Camera</strong> at it (not MeetChat) and tap <strong>Open in MeetChat</strong>.</li>
+            <li>MeetChat asks <strong>Join “Neighbours”?</strong> and shows the safety code. They check that it matches yours and tap <strong>Join</strong>.</li>
+            <li>Can’t meet? Tap <strong>Send Invite Link</strong> and send it in a way you trust. Tapping the link joins in the same way.</li>
+          </ol>
+          <div class="note"><p><strong>The QR code is the key.</strong> Anyone who has it, or a photo of it, or the link, can read and write in the chat. Show it face to face if you can, and only to people you trust.</p></div>
+          <p>To show the invite again later, open the chat and tap the QR button (top right), then <strong>Invite People — QR Code</strong>. Anyone in the chat can invite others.</p>
+        </div>
+      </div>
+
+      <h3>Join with a copied link</h3>
+      <p>If an invite link can’t be tapped, for example because it was pasted into a note, copy it, then in MeetChat tap the pencil, <strong>Join a Chat</strong>, <strong>Paste</strong>.</p>
+
+      <h3>Many chats</h3>
+      <div class="pair">
+        <div>
+          <p>Every chat you start or join appears in the list, newest message first, with the number of unread messages. A message only shows up in the chat whose key opens it. On its way it may pass through phones that aren’t in that chat. They carry it but can’t read it.</p>
+          <p>To leave a chat, open it, tap the QR button and then <strong>Leave Chat</strong>. This deletes the key and the messages from your iPhone. Coming back needs a new invite from someone in the chat.</p>
+        </div>
+        <figure>
+          <img src="img/chats2.jpg" alt="Chat list with two chats: Neighbours with no messages yet and Family with unread messages" loading="lazy">
+          <figcaption>Two chats, each with its own key.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="ch" id="encryption">
+      <h2><span class="num">04</span>Encryption</h2>
+      <p class="intro">Every message is encrypted on your iPhone before it leaves, whatever the network. Text messages, the internet relay, other people’s phones and Meshtastic radios carry it sealed. Only an iPhone with the chat’s key can open it.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Part</th><th>How it works</th></tr></thead>
+          <tbody>
+            <tr><td>Chat key</td><td>32 random bytes (256 bits), made on the iPhone that starts the chat. It is shared only through the QR code or invite link and is stored in the iPhone’s Keychain, on this device only.</td></tr>
+            <tr><td>Sealing</td><td>AES-256-GCM, with keys derived from the chat key (HKDF-SHA256). The seal also covers the message’s header, so a carrier can’t change its expiry or anything else without it showing.</td></tr>
+            <tr><td>What’s hidden</td><td>Your name, the text and the time sent.</td></tr>
+            <tr><td>What carriers see</td><td>A random message number, a short tag that tells MeetChat phones which chat it belongs to (it can’t be turned back into the key), when it expires, and its size.</td></tr>
+            <tr><td>Internet relay</td><td>Gets only sealed messages, on a topic name worked out from the key. It can’t read them or tell who wrote them. It does see the internet address of each phone that connects.</td></tr>
+            <tr><td>On your iPhone</td><td>Messages are saved in a protected file that can’t be read until the iPhone has been unlocked once after starting up.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Safety code</h3>
+      <div class="pair">
+        <div>
+          <p>Every chat has a six-digit <strong>safety code</strong>, worked out from its key. Everyone in the same chat sees the same code: at the top of the chat, in chat info and in the invite. If someone’s code is different, they are in a different chat. Compare codes when you invite people.</p>
+          <h3>What it doesn’t protect against</h3>
+          <ul>
+            <li><strong>Someone with the invite.</strong> Everyone with the key can read the whole chat and write in it. If an invite gets out, start a new chat and leave the old one.</li>
+            <li><strong>Names aren’t verified.</strong> Anyone in the chat could type any name. Recognise people by what they write.</li>
+            <li><strong>A lost key opens old messages.</strong> The key doesn’t change over time, so someone who gets it later can also read messages they collected earlier. Keep your iPhone locked with a passcode.</li>
+            <li><strong>Others can tell a message was sent.</strong> Carriers see that a message exists, its size and roughly when it was sent, but not what it says.</li>
+          </ul>
+        </div>
+        <figure>
+          <img src="img/info.jpg" alt="Chat info: Invite People, name, SMS numbers, safety code 341 801 and Leave Chat" loading="lazy">
+          <figcaption>Chat info, with the safety code.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="ch" id="messages">
+      <h2><span class="num">05</span>Sending and reading</h2>
+      <div class="pair">
+        <div>
+          <p class="intro">Open a chat, type a message and tap the green <strong>Send</strong> arrow.</p>
+          <p>Messages are short, up to 140 bytes. That’s about 140 letters without accents, and fewer with accents or emoji. This keeps each message small enough for a single Meshtastic radio packet and a short text message. As you get close, a counter shows how much is left, and <strong>Send</strong> is greyed out when the message is too long.</p>
+          <p>Every message shows which network carried it:</p>
+          <ul>
+            <li><strong>Messages you receive</strong> show the sender’s name above, and the time and the network they came in on below: <em>via Internet</em>, <em>via Radio</em>, <em>via Phone nearby</em> or <em>via SMS</em>.</li>
+            <li><strong>Messages you send</strong> list, in green, every network they have gone out on so far, for example <em>Internet · 2 phones · Radio</em>. The list grows as more networks take the message. Until one does, the message shows <em>Waiting for a network</em> in orange.</li>
+          </ul>
+          <p>Touch and hold a message to <strong>Copy</strong> it. On your own messages you can also <strong>Send as SMS</strong> or see <strong>Delivery</strong>.</p>
+        </div>
+        <figure>
+          <img src="img/chat.jpg" alt="Family chat: messages from Ana and Rui marked via Internet, via Radio, via Phone nearby and via SMS, and one of your own marked SMS, Internet, 2 phones, Radio" loading="lazy">
+          <figcaption>A chat. Under each message: the networks it travelled on.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Delivery: how far your message got</h3>
+      <div class="pair flip">
+        <figure>
+          <img src="img/delivery.jpg" alt="Delivery sheet: text message sent, on the relay, handed to 2 phones, heard by the radio network" loading="lazy">
+          <figcaption>Tap your message to see each network.</figcaption>
+        </figure>
+        <div>
+          <p>Tap one of your messages to see all four networks, including the ones it is still waiting for:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Network</th><th>What you can see</th></tr></thead>
+              <tbody>
+                <tr><td>Text message</td><td>Not sent · Sent</td></tr>
+                <tr><td>Internet</td><td>Waiting for internet · Sending… · On the relay</td></tr>
+                <tr><td>Phones nearby</td><td>Waiting · Handed to N phones</td></tr>
+                <tr><td>Meshtastic radio</td><td>No radio linked · Waiting for the radio · Sent · Heard by the radio network · Sent, but no other radio answered</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>“Handed to” and “heard” mean the message reached the next phone or radio, not necessarily the person you’re writing to. Those carriers pass it on.</p>
+        </div>
+      </div>
+
+      <div class="pair">
+        <div>
+          <h3>Too long</h3>
+          <p>If a message is too long, it shows how many bytes it’s over. Shorten it, or split it into two messages.</p>
+        </div>
+        <figure>
+          <img src="img/toolong.jpg" alt="Composer with a long message and the warning Too long — 15 over (one radio packet)" loading="lazy">
+          <figcaption>Over the limit: Send is greyed out.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="ch" id="sms">
+      <h2><span class="num">06</span>Text messages</h2>
+      <p class="intro">SMS needs only a mobile signal, which often comes back before mobile data does, and reaches people who are far away.</p>
+      <ol class="steps">
+        <li>Type your message and tap the <strong>message bubble</strong> next to Send. The message is sent on the other networks as usual, and Messages opens.</li>
+        <li>Pick who to send it to and tap <strong>Send</strong> in Messages. To have numbers filled in for you, add them once in chat info under <strong>SMS To</strong>.</li>
+        <li>To send an earlier message by SMS, touch and hold it and tap <strong>Send as SMS</strong>.</li>
+      </ol>
+      <p>The text holds the sealed message as a link, <code>meetchat://m/…</code>. The person taps it and the message opens in the chat in MeetChat. On an iPhone without MeetChat, or for someone outside the chat, it’s just unreadable characters. If the link can’t be tapped, copy the whole text, then in MeetChat tap the pencil, <strong>Join a Chat</strong>, <strong>Paste</strong>.</p>
+      <div class="note"><p>Messages show the SMS as sent once you press Send in Messages. Whether it is delivered depends on the phone network. MeetChat can’t read your text messages, so replies by SMS only reach the chat when you tap the link.</p></div>
+    </section>
+
+    <!-- 07 -->
+    <section class="ch" id="nearby">
+      <h2><span class="num">07</span>Phones nearby</h2>
+      <p class="intro">MeetChat phones find each other over Bluetooth and Wi-Fi with no network at all: no mobile signal, no router, no internet.</p>
+      <ul>
+        <li><strong>Every MeetChat phone is a carrier.</strong> It keeps every sealed message it meets, from any chat, and hands it to every MeetChat phone it meets later. A message can walk across town in a neighbour’s pocket.</li>
+        <li>Carried messages expire after <strong>48 hours</strong>. Each phone carries up to 500 messages, dropping the oldest first.</li>
+        <li>Messages pass between phones only while MeetChat is open on both. iOS stops nearby connections when an app is in the background.</li>
+        <li>The footer under Networks shows how many sealed messages this iPhone is carrying.</li>
+      </ul>
+    </section>
+
+    <!-- 08 -->
+    <section class="ch" id="radio">
+      <h2><span class="num">08</span>Meshtastic radio</h2>
+      <div class="pair">
+        <div>
+          <p class="intro">A Meshtastic radio is a small, cheap LoRa radio that sends messages kilometres with no phone network, passing them from radio to radio.</p>
+          <ol class="steps">
+            <li>Switch the radio on and keep it close. Close the Meshtastic app, because a radio talks to one app at a time.</li>
+            <li>In MeetChat tap <strong>Meshtastic radio</strong> under Networks, then <strong>Search for Radios</strong>, then your radio.</li>
+            <li>If the iPhone asks for a PIN, it’s on the radio’s screen, or 123456 on radios without a screen.</li>
+          </ol>
+          <p>When the radio is ready, Networks shows how many other radios it has heard in the last 2 hours. MeetChat reconnects to it whenever it’s in range. Your messages go out on it sealed, as private packets that the Meshtastic app doesn’t show. Messages that reach your iPhone other ways are passed on to the radio too.</p>
+          <p>Everyone in the chat with a radio should use the same <strong>channel</strong> (0 is the radio’s primary channel).</p>
+        </div>
+        <figure>
+          <img src="img/radio.jpg" alt="Meshtastic Radio screen: Meshtastic_4f2a ready, 5 other radios heard, radios nearby list and channel setting" loading="lazy">
+          <figcaption>A linked radio. (Screenshot from a demo: the Simulator has no Bluetooth.)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section class="ch" id="internet">
+      <h2><span class="num">09</span>Internet relay</h2>
+      <div class="pair">
+        <div>
+          <p class="intro">Over Wi-Fi or mobile data, messages go through an <strong>ntfy</strong> relay server: <code>https://ntfy.sh</code> unless you choose another.</p>
+          <ul>
+            <li>The relay only ever gets sealed messages, on a topic name worked out from the chat key (chapter 04).</li>
+            <li>ntfy.sh keeps messages for <strong>12 hours</strong>, so a phone that was offline catches up when it comes back.</li>
+            <li>While MeetChat is open, it checks for new messages every few seconds.</li>
+            <li>Messages written while offline wait and go out as soon as there is internet again.</li>
+          </ul>
+          <p>In <strong>Settings</strong> you can turn the internet off for MeetChat, or put in the address of your own ntfy server. Everyone in a chat must use the same server to reach each other over the internet.</p>
+        </div>
+        <figure>
+          <img src="img/settings.jpg" alt="Settings: your name, Send over the Internet on, relay server https://ntfy.sh working, Meshtastic radio and How It's Encrypted" loading="lazy">
+          <figcaption>Settings: name, relay and radio.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="ch" id="trouble">
+      <h2><span class="num">10</span>Troubleshooting</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Problem</th><th>Try this</th></tr></thead>
+          <tbody>
+            <tr><td>No MeetChat phones in range</td><td>Both phones need MeetChat open, Bluetooth on, and Local Network allowed (Settings → Privacy &amp; Security → Local Network → MeetChat).</td></tr>
+            <tr><td>Scanning the QR code does nothing</td><td>Use the iPhone Camera app, not MeetChat. Make sure MeetChat is installed on that iPhone. Or send the invite link instead.</td></tr>
+            <tr><td>“This message is for a chat you’re not in”</td><td>The SMS link belongs to a chat you haven’t joined. Ask for an invite.</td></tr>
+            <tr><td>Safety codes don’t match</td><td>You’re in different chats. Join again from the right QR code.</td></tr>
+            <tr><td>Relay not answering</td><td>Check the server address in Settings, or tap Use ntfy.sh. Messages wait and go out later.</td></tr>
+            <tr><td>Radio stays on “Looking for…”</td><td>Switch the radio on and bring it close. Close the Meshtastic app. If needed, unlink and link the radio again.</td></tr>
+            <tr><td>Messages from a radio don’t arrive</td><td>Check that everyone uses the same channel number, and that their radios are on the same Meshtastic channel settings.</td></tr>
+            <tr><td>Too long</td><td>Keep messages under 140 bytes. Emoji and accented letters take 2–4 bytes each.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="ch" id="reference">
+      <h2><span class="num">11</span>Quick reference</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>To…</th><th>Do this</th></tr></thead>
+          <tbody>
+            <tr><td>Start a chat</td><td>Pencil → New Chat → name → Create</td></tr>
+            <tr><td>Invite someone</td><td>Chat → QR button → Invite People — QR Code</td></tr>
+            <tr><td>Join a chat</td><td>Scan the QR code with the iPhone Camera, or tap the invite link</td></tr>
+            <tr><td>Join from copied text</td><td>Pencil → Join a Chat → Paste</td></tr>
+            <tr><td>Send</td><td>Type → green arrow</td></tr>
+            <tr><td>Send as SMS too</td><td>Type → message bubble next to the arrow</td></tr>
+            <tr><td>See where a message went</td><td>Tap your message</td></tr>
+            <tr><td>Check the safety code</td><td>Top of the chat, or chat → QR button</td></tr>
+            <tr><td>Add SMS numbers</td><td>Chat → QR button → SMS To</td></tr>
+            <tr><td>Link a Meshtastic radio</td><td>Networks → Meshtastic radio → Search for Radios</td></tr>
+            <tr><td>Change the relay server</td><td>Settings (gear) → Internet</td></tr>
+            <tr><td>Leave a chat</td><td>Chat → QR button → Leave Chat</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>MeetChat has no account, no ads and no tracking. Keys and messages stay on your phone. Messages leave it only sealed, and only on their way to the people in your chats. The internet relay keeps sealed messages for up to 48 hours so phones that were offline catch up; it can't read them.</p>
+    </section>
+
+    <!-- 12 -->
+    <section class="ch" id="legal">
+      <h2><span class="num">12</span>Safety and legal</h2>
+      <p><strong>Not an emergency service.</strong> MeetChat doesn't replace emergency services. If you or someone else is in danger, call 112 (or your local emergency number) whenever you can.</p>
+      <p><strong>Radio rules.</strong> A Meshtastic® radio sends on licence-free bands that have limits by country. MeetChat sets the radio's region from your country (you can change it) and never raises its power or its airtime limits. If a radio is in licensed (amateur radio) mode, MeetChat doesn't send its encrypted messages on it, because amateur radio rules don't allow encryption; plain-text radio chats still work.</p>
+      <p><strong>Trademarks.</strong> Meshtastic® is a registered trademark of Meshtastic LLC. MeetChat is not affiliated with or endorsed by the Meshtastic project. MeetChat contains no Meshtastic code; it talks to the radio over its standard Bluetooth interface.</p>
+      <p><strong>Maps.</strong> Map data © OpenStreetMap contributors (ODbL). Tiles and style by OpenFreeMap, © OpenMapTiles. Maps drawn with MapLibre (BSD licence). All open-source licences are in the app: Settings → About MeetChat.</p>
+    </section>
+  </main>
+</div>
+
+<footer class="wrap">MeetChat · encrypted chat for iPhone and Android over SMS, internet, phones nearby and Meshtastic® radio. Meshtastic® is a registered trademark of Meshtastic LLC; MeetChat is not affiliated with or endorsed by the Meshtastic project. Screenshots and video use an example chat, “Family”.</footer>
+</body>
+</html>
