@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "24L8QBGF55.com.miguelgoncalves.meetchat"
+        ],
+        "components": [
+          {
+            "/": "/m/*"
+          }
+        ]
+      }
+    ]
+  }
+}
