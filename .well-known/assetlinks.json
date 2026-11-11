@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.miguelgoncalves.meetchat",
+    "sha256_cert_fingerprints": [
+      "74:5B:6E:78:40:3B:44:DD:55:73:50:19:78:72:7B:D2:9E:4B:5A:96:AB:68:0A:16:AC:10:79:FE:A4:C8:97:17"
+    ]
+  }
+}]

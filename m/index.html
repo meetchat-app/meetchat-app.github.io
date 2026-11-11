@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeetChat message</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../manual/img/icon.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<div class="wrap">
+<nav class="top">
+  <a class="home" href="../"><img src="../manual/img/icon.png" alt="">MeetChat</a>
+</nav>
+<img class="hero-icon" src="../manual/img/icon.png" alt="MeetChat app icon">
+<h1>A MeetChat message</h1>
+<p class="lede">If MeetChat didn't open by itself, tap Open in MeetChat. Don't have it yet? Get MeetChat, then tap the link in the message again.</p>
+<div class="buttons">
+  <a class="btn primary" id="open" href="#">Open in MeetChat</a>
+  <a class="btn" href="../">Get MeetChat</a>
+</div>
+<p>Only the people in your chat can read what this link carries. This page only hands it to the app: it never reaches this website.</p>
+<footer>MeetChat · encrypted chat for when phone networks fail, for iPhone and Android</footer>
+</div>
+<script>
+// What the link carries is after the #: it never reaches this site. Handed on to the app as meetchat://m/.
+var data = location.hash.slice(1);
+var app = "meetchat://m/" + data;
+document.getElementById("open").href = app;
+if (data) location.replace(app);
+</script>
+</body>
+</html>
