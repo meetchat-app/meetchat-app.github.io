@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MeetChat Manual</title>
-
-
 <link rel="stylesheet" href="../fonts/fonts.css">
 <style>
 /* Layout: a field manual — sticky chapter rail on the left, reading column with phone screenshots set beside the steps. */
@@ -185,10 +183,10 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
 <header class="mast wrap">
   <div class="brand">
     <img src="img/icon.png" alt="MeetChat app icon: a green neon chat bubble with a padlock">
-    <span class="eyebrow">User manual · iPhone · Encrypted chat</span>
+    <span class="eyebrow">User manual · iPhone and Android · Encrypted chat</span>
   </div>
   <h1>MeetChat Manual</h1>
-  <p class="lede">MeetChat is an encrypted group chat for when the network is down. Messages get through any way they can: as a text message, over the internet, from phone to phone over Bluetooth and Wi-Fi, or over a Meshtastic radio. Whatever the network, only people in the chat can read them.</p>
+  <p class="lede">MeetChat is an encrypted group chat for when the network is down. Messages get through any way they can: as a text message, over the internet, from phone to phone over Bluetooth and Wi-Fi, or over a Meshtastic® radio. Whatever the network, only people in the chat can read them. iPhone and Android phones can be in the same chat.</p>
 
   <div class="tour">
     <video controls preload="metadata" poster="img/poster.jpg" src="../media/MeetChat-Tour.mp4"></video>
@@ -207,10 +205,13 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
       <li><a href="#messages">Sending and reading</a></li>
       <li><a href="#sms">Text messages</a></li>
       <li><a href="#nearby">Phones nearby</a></li>
+      <li><a href="#map">The map</a></li>
       <li><a href="#radio">Meshtastic radio</a></li>
       <li><a href="#internet">Internet relay</a></li>
+      <li><a href="#full">Full Version</a></li>
       <li><a href="#trouble">Troubleshooting</a></li>
       <li><a href="#reference">Quick reference</a></li>
+      <li><a href="#legal">Safety and legal</a></li>
     </ol>
   </nav>
 
@@ -222,16 +223,34 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
         <div>
           <p class="intro">Set MeetChat up now, while everything works, and make your chats before you need them. Joining a chat needs the other person’s QR code or invite link, so you can’t join one in the middle of an emergency if you never met.</p>
           <ol class="steps">
-            <li>Open MeetChat, type your name and tap <strong>Start</strong>. People in your chats see this name above your messages. You can change it later in <strong>Settings</strong>.</li>
-            <li>When iOS asks, allow <strong>Bluetooth</strong> and <strong>Local Network</strong>. Without them MeetChat can’t reach phones nearby or a Meshtastic radio.</li>
+            <li>Open MeetChat, type your name and tap <strong>Start</strong>. People in your chats see this name above your messages.</li>
+            <li>When the phone asks, allow <strong>Bluetooth</strong>, <strong>Local Network</strong> (iPhone), <strong>Nearby devices</strong> (Android) and <strong>Notifications</strong>. Without them MeetChat can’t reach phones nearby or a Meshtastic radio, or tell you about new messages.</li>
+            <li>Put your <strong>phone number</strong> in <strong>⚙︎ Settings</strong>. MeetChat needs it to send text messages, and gives it to the people in your chats so their texts reach you (chapter 06).</li>
             <li>Start a chat, or join one (chapter 03).</li>
           </ol>
-          <div class="note"><p><strong>No account, no phone number.</strong> MeetChat has no sign-up and no server of its own. Your name and chats stay on your iPhone.</p></div>
+          <div class="note"><p><strong>No account.</strong> MeetChat has no sign-up. Your name, your number and your chats stay on your phone, and only the people in your chats see them.</p></div>
         </div>
         <figure>
           <img src="img/welcome.jpg" alt="Welcome screen: Chat When the Network Is Down, the four networks, a name field and the Start button" loading="lazy">
           <figcaption>The first screen.</figcaption>
         </figure>
+      </div>
+      <div class="pair flip">
+        <figure>
+          <img src="img/settings.jpg" alt="Settings: your name, your phone number with SMS is available, and the appearance options" loading="lazy">
+          <figcaption>⚙︎ Settings: your name and your phone number.</figcaption>
+        </figure>
+        <div>
+          <h3>Settings</h3>
+          <p>The gear at the top left of the chat list opens <strong>Settings</strong>:</p>
+          <ul>
+            <li><strong>Your Name</strong> and <strong>Your Phone Number</strong>. Without a number, SMS shows as unavailable.</li>
+            <li><strong>Appearance</strong>: dark or light, the accent colour, the colour of received messages and the text size.</li>
+            <li><strong>Full Version</strong> (chapter 11).</li>
+            <li><strong>Networks</strong>: the internet relay (chapter 10) and the Meshtastic radio (chapter 09).</li>
+            <li><strong>About MeetChat</strong>: the emergency notice, trademarks and open-source licences.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -240,12 +259,13 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
       <h2><span class="num">02</span>The four networks</h2>
       <div class="pair">
         <div>
-          <p class="intro">At the top of the chat list, <strong>Networks</strong> shows the four ways a message can travel and which of them work right now.</p>
-          <p>When you tap <strong>Send</strong>, the message goes out on every network that works at that moment. On networks that aren’t working, it waits and goes out as soon as they are. A message that reaches your iPhone one way is passed on the other ways, so it can jump from the radio to the internet or from the internet to phones nearby.</p>
-          <p><span class="dot ok"></span>Green: working now. <span class="dot warn"></span>Orange: waiting. <span class="dot off"></span>Grey: not in use.</p>
+          <p class="intro">At the top of the chat list, <strong>Networks</strong> shows four icons: SMS, Internet, Nearby and Radio. Their colour says which work right now.</p>
+          <p><span class="dot ok"></span>Green: working now. <span class="dot warn"></span>Orange: waiting, for example no phones in range yet. <span class="dot off"></span>Grey: not available, for example no number in Settings for SMS. An icon that’s struck through is switched off.</p>
+          <p>When you tap <strong>Send</strong>, the message goes out on every network that works at that moment (SMS has its own button). On networks that aren’t working, it waits and goes out as soon as they are. A message that reaches your phone one way is passed on the other ways, so it can jump from the radio to the internet or from the internet to phones nearby.</p>
+          <p>Tap the icons for the <strong>Networks</strong> page, with each network in words. Touch and hold a network there to switch it off or on, for example to test a single network or to save battery.</p>
         </div>
         <figure>
-          <img src="img/chats.jpg" alt="Chat list: Networks with text messages, internet with the relay working, no MeetChat phones in range, and a Meshtastic radio linked; below, the Family chat with 4 unread" loading="lazy">
+          <img src="img/chats.jpg" alt="Chat list: the Networks row with SMS, Internet, Nearby and Radio icons, and the Family chat with 4 unread messages" loading="lazy">
           <figcaption>Networks above your chats. The Family chat has 4 unread messages.</figcaption>
         </figure>
       </div>
@@ -253,10 +273,10 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
         <table>
           <thead><tr><th>Network</th><th>Needs</th><th>Reach</th><th>Chapter</th></tr></thead>
           <tbody>
-            <tr><td>Text messages · SMS</td><td>A mobile signal (no internet). You press Send in Messages yourself.</td><td>Anywhere with a signal</td><td>06</td></tr>
-            <tr><td>Internet</td><td>Wi-Fi or mobile data</td><td>The world</td><td>09</td></tr>
+            <tr><td>Text messages · SMS</td><td>A mobile signal (no internet) and your number in Settings. You press Send in your messages app yourself.</td><td>Anywhere with a signal</td><td>06</td></tr>
+            <tr><td>Internet</td><td>Wi-Fi or mobile data</td><td>The world</td><td>10</td></tr>
             <tr><td>Phones nearby</td><td>Nothing: Bluetooth and Wi-Fi, phone to phone</td><td>Tens of metres per hop, further as phones move</td><td>07</td></tr>
-            <tr><td>Meshtastic radio</td><td>A Meshtastic radio linked over Bluetooth</td><td>Kilometres over LoRa</td><td>08</td></tr>
+            <tr><td>Meshtastic radio</td><td>A Meshtastic radio linked over Bluetooth</td><td>Kilometres over LoRa</td><td>09</td></tr>
           </tbody>
         </table>
       </div>
@@ -265,17 +285,17 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
     <!-- 03 -->
     <section class="ch" id="chats">
       <h2><span class="num">03</span>Chats and invites</h2>
-      <p class="intro">A chat is a group of people who share one secret key. You can have as many chats as you like, for example family, neighbours and a work team. Each chat has its own key, so people in one chat can’t read another.</p>
+      <p class="intro">A chat is a group of people who share one secret key. Each chat has its own key, so people in one chat can’t read another. The free version has one chat, with no limit on people or messages; the Full Version has as many as you like (chapter 11).</p>
 
       <h3>Start a chat</h3>
       <div class="pair">
         <div>
           <ol class="steps">
-            <li>Tap the pencil (top right), then <strong>New Chat</strong>.</li>
-            <li>Type a name, for example <em>Neighbours</em>, and tap <strong>Create</strong>. A new 256-bit key is made on your iPhone, just for this chat.</li>
+            <li>Tap <strong>✎</strong> (top right), then <strong>New Chat</strong>.</li>
+            <li>Type a name, for example <em>Neighbours</em>, and tap <strong>Create</strong>. A new 256-bit key is made on your phone, just for this chat.</li>
             <li>The invite opens straight away (next step).</li>
           </ol>
-          <p>The chat name is only a label. Each person can rename their copy in chat info without changing anything for the others.</p>
+          <p>The same menu has <strong>Join a Chat</strong> and <strong>New Radio Chat</strong> (chapter 09). The chat name is only a label: each person can rename their copy without changing anything for the others.</p>
         </div>
         <figure>
           <img src="img/newchat.jpg" alt="New Chat sheet with the name Neighbours typed in" loading="lazy">
@@ -291,27 +311,27 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
         </figure>
         <div>
           <ol class="steps">
-            <li>Show the <strong>QR code</strong> to the other person. They point the iPhone <strong>Camera</strong> at it (not MeetChat) and tap <strong>Open in MeetChat</strong>.</li>
+            <li>Show the <strong>QR code</strong>. The other person taps <strong>✎ → Join a Chat → Scan QR Code</strong> in MeetChat and points the camera at it. (The iPhone Camera app works too.)</li>
             <li>MeetChat asks <strong>Join “Neighbours”?</strong> and shows the safety code. They check that it matches yours and tap <strong>Join</strong>.</li>
             <li>Can’t meet? Tap <strong>Send Invite Link</strong> and send it in a way you trust. Tapping the link joins in the same way.</li>
           </ol>
           <div class="note"><p><strong>The QR code is the key.</strong> Anyone who has it, or a photo of it, or the link, can read and write in the chat. Show it face to face if you can, and only to people you trust.</p></div>
-          <p>To show the invite again later, open the chat and tap the QR button (top right), then <strong>Invite People — QR Code</strong>. Anyone in the chat can invite others.</p>
+          <p>To show the invite again later, open the chat and tap the <strong>people</strong> icon, then <strong>Add People</strong>. Anyone in the chat can invite others.</p>
         </div>
       </div>
 
       <h3>Join with a copied link</h3>
-      <p>If an invite link can’t be tapped, for example because it was pasted into a note, copy it, then in MeetChat tap the pencil, <strong>Join a Chat</strong>, <strong>Paste</strong>.</p>
+      <p>If an invite link can’t be tapped, for example because it was pasted into a note, copy it, then in MeetChat tap <strong>✎ → Join a Chat → Paste</strong>.</p>
 
-      <h3>Many chats</h3>
+      <h3>People and chat info</h3>
       <div class="pair">
         <div>
-          <p>Every chat you start or join appears in the list, newest message first, with the number of unread messages. A message only shows up in the chat whose key opens it. On its way it may pass through phones that aren’t in that chat. They carry it but can’t read it.</p>
-          <p>To leave a chat, open it, tap the QR button and then <strong>Leave Chat</strong>. This deletes the key and the messages from your iPhone. Coming back needs a new invite from someone in the chat.</p>
+          <p>The <strong>people</strong> icon in a chat lists everyone MeetChat has heard from in it, with how they are and when they were last heard. The <strong>ⓘ</strong> icon opens chat info: invite people, rename the chat, the numbers that get your SMS (chapter 06), the safety code, and <strong>Delete Chat</strong>, which deletes the key and the messages from your phone. Coming back needs a new invite from someone in the chat.</p>
+          <p>Every chat you start or join appears in the list, newest message first, with the number of unread messages. A message only shows up in the chat whose key opens it. On its way it may pass through phones that aren’t in that chat: they carry it but can’t read it.</p>
         </div>
         <figure>
-          <img src="img/chats2.jpg" alt="Chat list with two chats: Neighbours with no messages yet and Family with unread messages" loading="lazy">
-          <figcaption>Two chats, each with its own key.</figcaption>
+          <img src="img/info.jpg" alt="Chat info: Add People, People, name, SMS To, safety code 341 801 and Delete Chat" loading="lazy">
+          <figcaption>Chat info, with the safety code.</figcaption>
         </figure>
       </div>
     </section>
@@ -319,38 +339,30 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
     <!-- 04 -->
     <section class="ch" id="encryption">
       <h2><span class="num">04</span>Encryption</h2>
-      <p class="intro">Every message is encrypted on your iPhone before it leaves, whatever the network. Text messages, the internet relay, other people’s phones and Meshtastic radios carry it sealed. Only an iPhone with the chat’s key can open it.</p>
+      <p class="intro">Every message is encrypted on your phone before it leaves, whatever the network. Text messages, the internet relay, other people’s phones and Meshtastic radios carry it sealed. Only a phone with the chat’s key can open it.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Part</th><th>How it works</th></tr></thead>
           <tbody>
-            <tr><td>Chat key</td><td>32 random bytes (256 bits), made on the iPhone that starts the chat. It is shared only through the QR code or invite link and is stored in the iPhone’s Keychain, on this device only.</td></tr>
+            <tr><td>Chat key</td><td>32 random bytes (256 bits), made on the phone that starts the chat. It is shared only through the QR code or invite link and is stored on the phone only (iPhone: Keychain; Android: locked with a key in the Android Keystore).</td></tr>
             <tr><td>Sealing</td><td>AES-256-GCM, with keys derived from the chat key (HKDF-SHA256). The seal also covers the message’s header, so a carrier can’t change its expiry or anything else without it showing.</td></tr>
-            <tr><td>What’s hidden</td><td>Your name, the text and the time sent.</td></tr>
+            <tr><td>What’s hidden</td><td>Your name, the text, photos, files, places, reactions, edits, your number and the time sent.</td></tr>
             <tr><td>What carriers see</td><td>A random message number, a short tag that tells MeetChat phones which chat it belongs to (it can’t be turned back into the key), when it expires, and its size.</td></tr>
             <tr><td>Internet relay</td><td>Gets only sealed messages, on a topic name worked out from the key. It can’t read them or tell who wrote them. It does see the internet address of each phone that connects.</td></tr>
-            <tr><td>On your iPhone</td><td>Messages are saved in a protected file that can’t be read until the iPhone has been unlocked once after starting up.</td></tr>
           </tbody>
         </table>
       </div>
 
       <h3>Safety code</h3>
-      <div class="pair">
-        <div>
-          <p>Every chat has a six-digit <strong>safety code</strong>, worked out from its key. Everyone in the same chat sees the same code: at the top of the chat, in chat info and in the invite. If someone’s code is different, they are in a different chat. Compare codes when you invite people.</p>
-          <h3>What it doesn’t protect against</h3>
-          <ul>
-            <li><strong>Someone with the invite.</strong> Everyone with the key can read the whole chat and write in it. If an invite gets out, start a new chat and leave the old one.</li>
-            <li><strong>Names aren’t verified.</strong> Anyone in the chat could type any name. Recognise people by what they write.</li>
-            <li><strong>A lost key opens old messages.</strong> The key doesn’t change over time, so someone who gets it later can also read messages they collected earlier. Keep your iPhone locked with a passcode.</li>
-            <li><strong>Others can tell a message was sent.</strong> Carriers see that a message exists, its size and roughly when it was sent, but not what it says.</li>
-          </ul>
-        </div>
-        <figure>
-          <img src="img/info.jpg" alt="Chat info: Invite People, name, SMS numbers, safety code 341 801 and Leave Chat" loading="lazy">
-          <figcaption>Chat info, with the safety code.</figcaption>
-        </figure>
-      </div>
+      <p>Every chat has a six-digit <strong>safety code</strong>, worked out from its key. Everyone in the same chat sees the same code: at the top of the chat, in chat info and in the invite. If someone’s code is different, they are in a different chat. Compare codes when you invite people.</p>
+      <h3>What it doesn’t protect against</h3>
+      <ul>
+        <li><strong>Someone with the invite.</strong> Everyone with the key can read the whole chat and write in it. If an invite gets out, start a new chat and delete the old one.</li>
+        <li><strong>Names aren’t verified.</strong> Anyone in the chat could type any name. Recognise people by what they write.</li>
+        <li><strong>A lost key opens old messages.</strong> The key doesn’t change over time, so someone who gets it later can also read messages they collected earlier. Keep your phone locked.</li>
+        <li><strong>Others can tell a message was sent.</strong> Carriers see that a message exists, its size and roughly when it was sent, but not what it says.</li>
+        <li><strong>Radio chats</strong> (chapter 09) are ordinary Meshtastic channel messages, not end-to-end encrypted like your other chats. Each one says so at the top.</li>
+      </ul>
     </section>
 
     <!-- 05 -->
@@ -358,14 +370,12 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
       <h2><span class="num">05</span>Sending and reading</h2>
       <div class="pair">
         <div>
-          <p class="intro">Open a chat, type a message and tap the green <strong>Send</strong> arrow.</p>
-          <p>Messages are short, up to 140 bytes. That’s about 140 letters without accents, and fewer with accents or emoji. This keeps each message small enough for a single Meshtastic radio packet and a short text message. As you get close, a counter shows how much is left, and <strong>Send</strong> is greyed out when the message is too long.</p>
-          <p>Every message shows which network carried it:</p>
+          <p class="intro">Open a chat, type a message and tap the <strong>Send</strong> arrow. The <strong>+</strong> next to the box adds a photo, a file or your location.</p>
+          <p>Messages are short, up to 140 bytes: about 140 letters without accents, fewer with accents or emoji. This keeps each message small enough for a single Meshtastic radio packet and a short text message. As you get close, a counter shows how much is left. Photos and files go only over the internet and phones nearby.</p>
           <ul>
             <li><strong>Messages you receive</strong> show the sender’s name above, and the time and the network they came in on below: <em>via Internet</em>, <em>via Radio</em>, <em>via Phone nearby</em> or <em>via SMS</em>.</li>
-            <li><strong>Messages you send</strong> list, in green, every network they have gone out on so far, for example <em>Internet · 2 phones · Radio</em>. The list grows as more networks take the message. Until one does, the message shows <em>Waiting for a network</em> in orange.</li>
+            <li><strong>Messages you send</strong> list every network they have gone out on so far, for example <em>Internet · 2 phones · Radio</em>. Until one takes it, the message shows <em>Waiting for a network</em>.</li>
           </ul>
-          <p>Touch and hold a message to <strong>Copy</strong> it. On your own messages you can also <strong>Send as SMS</strong> or see <strong>Delivery</strong>.</p>
         </div>
         <figure>
           <img src="img/chat.jpg" alt="Family chat: messages from Ana and Rui marked via Internet, via Radio, via Phone nearby and via SMS, and one of your own marked SMS, Internet, 2 phones, Radio" loading="lazy">
@@ -373,37 +383,34 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
         </figure>
       </div>
 
-      <h3>Delivery: how far your message got</h3>
+      <h3>Reactions, reply, forward, edit, delete</h3>
       <div class="pair flip">
         <figure>
-          <img src="img/delivery.jpg" alt="Delivery sheet: text message sent, on the relay, handed to 2 phones, heard by the radio network" loading="lazy">
-          <figcaption>Tap your message to see each network.</figcaption>
+          <img src="img/react.jpg" alt="Touch and hold on a message: a row of reactions with a plus, then Reply, Forward, Copy and Delete" loading="lazy">
+          <figcaption>Touch and hold a message.</figcaption>
         </figure>
         <div>
-          <p>Tap one of your messages to see all four networks, including the ones it is still waiting for:</p>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Network</th><th>What you can see</th></tr></thead>
-              <tbody>
-                <tr><td>Text message</td><td>Not sent · Sent</td></tr>
-                <tr><td>Internet</td><td>Waiting for internet · Sending… · On the relay</td></tr>
-                <tr><td>Phones nearby</td><td>Waiting · Handed to N phones</td></tr>
-                <tr><td>Meshtastic radio</td><td>No radio linked · Waiting for the radio · Sent · Heard by the radio network · Sent, but no other radio answered</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p>“Handed to” and “heard” mean the message reached the next phone or radio, not necessarily the person you’re writing to. Those carriers pass it on.</p>
+          <p>Touch and hold a message:</p>
+          <ul>
+            <li><strong>Reactions</strong>: tap 👍 ❤️ 😂 😮 😢 🙏, or <strong>+</strong> for any emoji. Reactions show under the message, with how many people put each one; tap yours there to take it off.</li>
+            <li><strong>Reply</strong>: your answer shows the message it answers in a box above it. Tap the box to jump to the original.</li>
+            <li><strong>Forward</strong>: sends a copy to another chat (text, place, photo or file), marked <em>Forwarded</em>.</li>
+            <li><strong>Copy</strong> the text.</li>
+            <li><strong>Edit</strong>: your own text messages, up to 15 minutes after sending. Everyone sees the new text, marked <em>Edited</em>.</li>
+            <li><strong>Delete</strong>: <em>Delete for Me</em> takes it off your phone only. <em>Delete for Everyone</em> (your own messages, up to 48 hours after sending, while they’re still travelling) leaves “This message was deleted” on everyone’s phone.</li>
+            <li>On your own messages: <strong>Send as SMS</strong> and <strong>Delivery</strong>.</li>
+          </ul>
+          <div class="note"><p><strong>Text messages can’t be changed.</strong> A message that went or came as an SMS can’t be edited or deleted for everyone: that copy is already in people’s messages apps.</p></div>
         </div>
       </div>
-
       <div class="pair">
         <div>
-          <h3>Too long</h3>
-          <p>If a message is too long, it shows how many bytes it’s over. Shorten it, or split it into two messages.</p>
+          <h3>Delivery: how far your message got</h3>
+          <p>Tap one of your messages to see all four networks, including the ones it’s still waiting for, and who confirmed they got it. “Handed to” and “heard” mean the message reached the next phone or radio, not necessarily the person you’re writing to. Those carriers pass it on.</p>
         </div>
         <figure>
-          <img src="img/toolong.jpg" alt="Composer with a long message and the warning Too long — 15 over (one radio packet)" loading="lazy">
-          <figcaption>Over the limit: Send is greyed out.</figcaption>
+          <img src="img/reply.jpg" alt="A reply showing Ana's message in a box above it, and a reaction under her message" loading="lazy">
+          <figcaption>A reply, with the message it answers.</figcaption>
         </figure>
       </div>
     </section>
@@ -413,120 +420,181 @@ nav.top a:not(.home):hover, nav.top a[aria-current] { color: var(--neon); }
       <h2><span class="num">06</span>Text messages</h2>
       <p class="intro">SMS needs only a mobile signal, which often comes back before mobile data does, and reaches people who are far away.</p>
       <ol class="steps">
-        <li>Type your message and tap the <strong>message bubble</strong> next to Send. The message is sent on the other networks as usual, and Messages opens.</li>
-        <li>Pick who to send it to and tap <strong>Send</strong> in Messages. To have numbers filled in for you, add them once in chat info under <strong>SMS To</strong>.</li>
+        <li>Put your number in <strong>⚙︎ Settings</strong>. MeetChat sends it, sealed, to the people in your chats, and they send you theirs. That’s how MeetChat knows who to text.</li>
+        <li>Type your message and tap the <strong>message bubble</strong> next to Send. Your messages app opens with the text and the numbers of everyone in the chat who gave theirs, plus any number added in chat info under <strong>SMS To</strong>. Tap <strong>Send</strong> there.</li>
         <li>To send an earlier message by SMS, touch and hold it and tap <strong>Send as SMS</strong>.</li>
       </ol>
-      <p>The text holds the sealed message as a link, <code>meetchat://m/…</code>. The person taps it and the message opens in the chat in MeetChat. On an iPhone without MeetChat, or for someone outside the chat, it’s just unreadable characters. If the link can’t be tapped, copy the whole text, then in MeetChat tap the pencil, <strong>Join a Chat</strong>, <strong>Paste</strong>.</p>
-      <div class="note"><p>Messages show the SMS as sent once you press Send in Messages. Whether it is delivered depends on the phone network. MeetChat can’t read your text messages, so replies by SMS only reach the chat when you tap the link.</p></div>
+      <p>The text holds the sealed message as a link, <code>https://meetchat-app.github.io/m/#…</code>. The person taps it and the message opens in the chat in MeetChat. What the link carries comes after the <code>#</code>, which never reaches the website. If the link can’t be tapped, copy the whole text, then in MeetChat tap <strong>✎ → Join a Chat → Paste</strong>.</p>
+      <h3>Someone only SMS reaches</h3>
+      <p>If someone in the chat has lately only been heard by SMS (their phone has no data, for example), <strong>Send</strong> asks first: <strong>Only by SMS</strong> (to everyone in the chat) or <strong>Only Other Networks</strong> (internet, phones nearby and radio). That way a message never goes out twice, and nobody is left without it.</p>
+      <div class="note"><p>MeetChat can’t read your text messages, on iPhone or Android: a text reaches the chat when you tap its link. Whether an SMS is delivered depends on the phone network.</p></div>
     </section>
 
     <!-- 07 -->
     <section class="ch" id="nearby">
       <h2><span class="num">07</span>Phones nearby</h2>
-      <p class="intro">MeetChat phones find each other over Bluetooth and Wi-Fi with no network at all: no mobile signal, no router, no internet.</p>
+      <p class="intro">MeetChat phones find each other over Bluetooth and Wi-Fi with no network at all: no mobile signal, no router, no internet. iPhones and Android phones reach each other over Bluetooth.</p>
       <ul>
         <li><strong>Every MeetChat phone is a carrier.</strong> It keeps every sealed message it meets, from any chat, and hands it to every MeetChat phone it meets later. A message can walk across town in a neighbour’s pocket.</li>
         <li>Carried messages expire after <strong>48 hours</strong>. Each phone carries up to 500 messages, dropping the oldest first.</li>
-        <li>Messages pass between phones only while MeetChat is open on both. iOS stops nearby connections when an app is in the background.</li>
-        <li>The footer under Networks shows how many sealed messages this iPhone is carrying.</li>
+        <li>On iPhone, messages pass between phones while MeetChat is open. On Android, MeetChat keeps running in the background with a notification, so it carries messages with the screen off.</li>
       </ul>
     </section>
 
     <!-- 08 -->
+    <section class="ch" id="map">
+      <h2><span class="num">08</span>The map</h2>
+      <div class="pair">
+        <div>
+          <p class="intro">Each chat has a map (the map icon at the top of the chat): where everyone who shares their place is, how they are, and pins anyone put there.</p>
+          <p>The round button at the bottom right opens <strong>Map Options</strong>:</p>
+          <ul>
+            <li><strong>Share My Location</strong>: your place goes to the chat by itself as you move, until you turn it off. Only people in that chat see it.</li>
+            <li><strong>OK</strong>, <strong>Danger</strong>, <strong>Help</strong>: tells the chat how you are, with where you are. It shows as a coloured ring around your dot and as a message in the chat.</li>
+            <li><strong>Pin Where I Am</strong> or <strong>Pin Somewhere Else</strong>: for somewhere else, move the map until the pin in the middle is on the place, then tap ✓. Choose what it is: danger, shelter, water, first aid or meeting point, with a few words.</li>
+          </ul>
+          <p>You can also touch and hold the map to put a pin there. Tap a person or a pin for details; anyone can take a pin off. The streets you’ve looked at with internet stay on the phone, so the map still shows them without it.</p>
+        </div>
+        <figure>
+          <img src="img/map-menu.jpg" alt="The chat map with the Map Options panel: Share My Location, OK, Danger, Help, Pin Where I Am and Pin Somewhere Else" loading="lazy">
+          <figcaption>Map Options, from the button at the bottom.</figcaption>
+        </figure>
+      </div>
+      <div class="pair flip">
+        <figure>
+          <img src="img/map-pins.jpg" alt="The map with people and pins" loading="lazy">
+          <figcaption>People, how they are, and pins.</figcaption>
+        </figure>
+        <div>
+          <p>Positions shared live expire after 30 minutes without news. Over the radio, positions go only every 10 minutes and only when the radio is the only network, to save airtime.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 -->
     <section class="ch" id="radio">
-      <h2><span class="num">08</span>Meshtastic radio</h2>
+      <h2><span class="num">09</span>Meshtastic radio</h2>
       <div class="pair">
         <div>
           <p class="intro">A Meshtastic radio is a small, cheap LoRa radio that sends messages kilometres with no phone network, passing them from radio to radio.</p>
           <ol class="steps">
             <li>Switch the radio on and keep it close. Close the Meshtastic app, because a radio talks to one app at a time.</li>
-            <li>In MeetChat tap <strong>Meshtastic radio</strong> under Networks, then <strong>Search for Radios</strong>, then your radio.</li>
-            <li>If the iPhone asks for a PIN, it’s on the radio’s screen, or 123456 on radios without a screen.</li>
+            <li>In MeetChat open <strong>⚙︎ Settings → Meshtastic Radio</strong>, tap <strong>Search for Radios</strong>, then your radio.</li>
+            <li>If the phone asks for a PIN, it’s on the radio’s screen, or 123456 on radios without a screen.</li>
+            <li>Tap <strong>Set Up for MeetChat</strong>: MeetChat sets the region for your country (you can change it), a mode and a channel for its encrypted messages.</li>
           </ol>
-          <p>When the radio is ready, Networks shows how many other radios it has heard in the last 2 hours. MeetChat reconnects to it whenever it’s in range. Your messages go out on it sealed, as private packets that the Meshtastic app doesn’t show. Messages that reach your iPhone other ways are passed on to the radio too.</p>
-          <p>Everyone in the chat with a radio should use the same <strong>channel</strong> (0 is the radio’s primary channel).</p>
+          <p>When the radio is ready, the Radio icon turns green. MeetChat reconnects to it whenever it’s in range. Your messages go out on it sealed. Messages that reach your phone other ways are passed on to the radio too.</p>
+          <h3>Radio chats</h3>
+          <p><strong>✎ → New Radio Chat</strong> makes a chat on an ordinary Meshtastic channel, so you can talk with people who use the Meshtastic app or a radio with a keyboard (like a T-Deck). These messages aren’t end-to-end encrypted: on the open channel anyone nearby with Meshtastic can read them; on a private channel, only radios with its key.</p>
+          <div class="note"><p><strong>Licensed (amateur radio) mode.</strong> Amateur radio rules don’t allow encrypted messages, so MeetChat doesn’t send its sealed messages on a radio in that mode, and says so. Plain-text radio chats still work.</p></div>
         </div>
         <figure>
-          <img src="img/radio.jpg" alt="Meshtastic Radio screen: Meshtastic_4f2a ready, 5 other radios heard, radios nearby list and channel setting" loading="lazy">
+          <img src="img/radio.jpg" alt="Meshtastic Radio screen: a linked radio, its settings, radios nearby and channels" loading="lazy">
           <figcaption>A linked radio. (Screenshot from a demo: the Simulator has no Bluetooth.)</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- 09 -->
+    <!-- 10 -->
     <section class="ch" id="internet">
-      <h2><span class="num">09</span>Internet relay</h2>
+      <h2><span class="num">10</span>Internet relay</h2>
       <div class="pair">
         <div>
-          <p class="intro">Over Wi-Fi or mobile data, messages go through an <strong>ntfy</strong> relay server: <code>https://ntfy.sh</code> unless you choose another.</p>
+          <p class="intro">Over Wi-Fi or mobile data, messages go through an <strong>ntfy</strong> relay server: the NeedToApp server unless you choose another.</p>
           <ul>
             <li>The relay only ever gets sealed messages, on a topic name worked out from the chat key (chapter 04).</li>
-            <li>ntfy.sh keeps messages for <strong>12 hours</strong>, so a phone that was offline catches up when it comes back.</li>
-            <li>While MeetChat is open, it checks for new messages every few seconds.</li>
+            <li>The NeedToApp server keeps messages for <strong>48 hours</strong> (photos and files for 3), so a phone that was offline catches up when it comes back.</li>
             <li>Messages written while offline wait and go out as soon as there is internet again.</li>
           </ul>
-          <p>In <strong>Settings</strong> you can turn the internet off for MeetChat, or put in the address of your own ntfy server. Everyone in a chat must use the same server to reach each other over the internet.</p>
+          <p>In <strong>⚙︎ Settings → Internet Relay</strong> you can turn the internet off for MeetChat, or put in ntfy.sh or your own ntfy server. New chats use the server set there and take it in their invite, so everyone in a chat uses the same one. Chats you’re already in keep theirs.</p>
         </div>
         <figure>
-          <img src="img/settings.jpg" alt="Settings: your name, Send over the Internet on, relay server https://ntfy.sh working, Meshtastic radio and How It's Encrypted" loading="lazy">
-          <figcaption>Settings: name, relay and radio.</figcaption>
+          <img src="img/relay.jpg" alt="Internet Relay: Send over the Internet on, the NeedToApp server, working" loading="lazy">
+          <figcaption>The relay server, working.</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- 10 -->
+    <!-- 11 -->
+    <section class="ch" id="full">
+      <h2><span class="num">11</span>Full Version</h2>
+      <div class="pair">
+        <div>
+          <p class="intro">MeetChat is free for one chat, with no limit on people or messages. The <strong>Full Version</strong>, one payment and no subscription, gives you as many chats as you like.</p>
+          <p>It’s offered when you start or join a second chat, and in <strong>⚙︎ Settings → Full Version</strong>. On another phone with the same Apple or Google account, tap <strong>Restore Purchase</strong>. Radio chats don’t count towards the limit.</p>
+        </div>
+        <figure>
+          <img src="img/unlock.jpg" alt="MeetChat Full Version: unlimited chats, one payment, Restore Purchase" loading="lazy">
+          <figcaption>The Full Version.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 12 -->
     <section class="ch" id="trouble">
-      <h2><span class="num">10</span>Troubleshooting</h2>
+      <h2><span class="num">12</span>Troubleshooting</h2>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Problem</th><th>Try this</th></tr></thead>
           <tbody>
-            <tr><td>No MeetChat phones in range</td><td>Both phones need MeetChat open, Bluetooth on, and Local Network allowed (Settings → Privacy &amp; Security → Local Network → MeetChat).</td></tr>
-            <tr><td>Scanning the QR code does nothing</td><td>Use the iPhone Camera app, not MeetChat. Make sure MeetChat is installed on that iPhone. Or send the invite link instead.</td></tr>
+            <tr><td>SMS is grey (unavailable)</td><td>Put your phone number in ⚙︎ Settings. A phone with no SIM card can’t send SMS.</td></tr>
+            <tr><td>The SMS goes to nobody</td><td>The others haven’t put their number in Settings yet, or haven’t been heard since. Add numbers by hand in chat info → SMS To.</td></tr>
+            <tr><td>Tapping an SMS link opens the browser</td><td>Tap <strong>Open in MeetChat</strong> on the page. Make sure MeetChat is installed on that phone.</td></tr>
+            <tr><td>No MeetChat phones in range</td><td>Both phones need MeetChat open (iPhone), Bluetooth on, and Local Network (iPhone) or Nearby devices (Android) allowed.</td></tr>
             <tr><td>“This message is for a chat you’re not in”</td><td>The SMS link belongs to a chat you haven’t joined. Ask for an invite.</td></tr>
             <tr><td>Safety codes don’t match</td><td>You’re in different chats. Join again from the right QR code.</td></tr>
-            <tr><td>Relay not answering</td><td>Check the server address in Settings, or tap Use ntfy.sh. Messages wait and go out later.</td></tr>
+            <tr><td>Relay not answering</td><td>Check the server in ⚙︎ Settings → Internet Relay, or tap Use the NeedToApp server. Messages wait and go out later.</td></tr>
             <tr><td>Radio stays on “Looking for…”</td><td>Switch the radio on and bring it close. Close the Meshtastic app. If needed, unlink and link the radio again.</td></tr>
-            <tr><td>Messages from a radio don’t arrive</td><td>Check that everyone uses the same channel number, and that their radios are on the same Meshtastic channel settings.</td></tr>
-            <tr><td>Too long</td><td>Keep messages under 140 bytes. Emoji and accented letters take 2–4 bytes each.</td></tr>
+            <tr><td>The radio doesn’t send encrypted chats</td><td>It may be in licensed (amateur radio) mode: turn that off in the Meshtastic app.</td></tr>
+            <tr><td>Can’t start a second chat</td><td>The free version has one chat: see chapter 11.</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- 11 -->
+    <!-- 13 -->
     <section class="ch" id="reference">
-      <h2><span class="num">11</span>Quick reference</h2>
+      <h2><span class="num">13</span>Quick reference</h2>
       <div class="table-wrap">
         <table>
           <thead><tr><th>To…</th><th>Do this</th></tr></thead>
           <tbody>
-            <tr><td>Start a chat</td><td>Pencil → New Chat → name → Create</td></tr>
-            <tr><td>Invite someone</td><td>Chat → QR button → Invite People — QR Code</td></tr>
-            <tr><td>Join a chat</td><td>Scan the QR code with the iPhone Camera, or tap the invite link</td></tr>
-            <tr><td>Join from copied text</td><td>Pencil → Join a Chat → Paste</td></tr>
-            <tr><td>Send</td><td>Type → green arrow</td></tr>
-            <tr><td>Send as SMS too</td><td>Type → message bubble next to the arrow</td></tr>
+            <tr><td>Start a chat</td><td>✎ → New Chat → name → Create</td></tr>
+            <tr><td>Invite someone</td><td>Chat → people icon → Add People</td></tr>
+            <tr><td>Join a chat</td><td>✎ → Join a Chat → Scan QR Code, or tap the invite link</td></tr>
+            <tr><td>Join from copied text</td><td>✎ → Join a Chat → Paste</td></tr>
+            <tr><td>Send</td><td>Type → arrow</td></tr>
+            <tr><td>Send as SMS</td><td>Type → message bubble next to the arrow</td></tr>
+            <tr><td>React, reply, forward, edit, delete</td><td>Touch and hold the message</td></tr>
             <tr><td>See where a message went</td><td>Tap your message</td></tr>
-            <tr><td>Check the safety code</td><td>Top of the chat, or chat → QR button</td></tr>
-            <tr><td>Add SMS numbers</td><td>Chat → QR button → SMS To</td></tr>
-            <tr><td>Link a Meshtastic radio</td><td>Networks → Meshtastic radio → Search for Radios</td></tr>
-            <tr><td>Change the relay server</td><td>Settings (gear) → Internet</td></tr>
-            <tr><td>Leave a chat</td><td>Chat → QR button → Leave Chat</td></tr>
+            <tr><td>Share where you are, say how you are, put a pin</td><td>Chat → map → round button at the bottom</td></tr>
+            <tr><td>Check the safety code</td><td>Top of the chat, or chat → ⓘ</td></tr>
+            <tr><td>Your number for SMS</td><td>⚙︎ Settings → Your Phone Number</td></tr>
+            <tr><td>Link a Meshtastic radio</td><td>⚙︎ Settings → Meshtastic Radio → Search for Radios</td></tr>
+            <tr><td>Change the relay server</td><td>⚙︎ Settings → Internet Relay</td></tr>
+            <tr><td>Switch a network off</td><td>Tap the network icons → touch and hold a network</td></tr>
+            <tr><td>Delete a chat</td><td>Chat → ⓘ → Delete Chat</td></tr>
           </tbody>
         </table>
       </div>
-      <p>MeetChat has no account, no ads and no tracking. Keys and messages stay on your phone. Messages leave it only sealed, and only on their way to the people in your chats. The internet relay keeps sealed messages for up to 48 hours so phones that were offline catch up; it can't read them.</p>
+      <p>MeetChat has no account, no ads and no tracking. Keys and messages stay on your phone. Messages leave it only sealed, and only on their way to the people in your chats. The internet relay keeps sealed messages for up to 48 hours so phones that were offline catch up; it can’t read them. Privacy policy: <a href="https://meetchat-app.github.io/privacy/">meetchat-app.github.io/privacy</a>.</p>
     </section>
 
-    <!-- 12 -->
+    <!-- 14 -->
     <section class="ch" id="legal">
-      <h2><span class="num">12</span>Safety and legal</h2>
-      <p><strong>Not an emergency service.</strong> MeetChat doesn't replace emergency services. If you or someone else is in danger, call 112 (or your local emergency number) whenever you can.</p>
-      <p><strong>Radio rules.</strong> A Meshtastic® radio sends on licence-free bands that have limits by country. MeetChat sets the radio's region from your country (you can change it) and never raises its power or its airtime limits. If a radio is in licensed (amateur radio) mode, MeetChat doesn't send its encrypted messages on it, because amateur radio rules don't allow encryption; plain-text radio chats still work.</p>
-      <p><strong>Trademarks.</strong> Meshtastic® is a registered trademark of Meshtastic LLC. MeetChat is not affiliated with or endorsed by the Meshtastic project. MeetChat contains no Meshtastic code; it talks to the radio over its standard Bluetooth interface.</p>
-      <p><strong>Maps.</strong> Map data © OpenStreetMap contributors (ODbL). Tiles and style by OpenFreeMap, © OpenMapTiles. Maps drawn with MapLibre (BSD licence). All open-source licences are in the app: Settings → About MeetChat.</p>
+      <h2><span class="num">14</span>Safety and legal</h2>
+      <div class="pair">
+        <div>
+          <p><strong>Not an emergency service.</strong> MeetChat doesn't replace emergency services. If you or someone else is in danger, call 112 (or your local emergency number) whenever you can.</p>
+          <p><strong>Radio rules.</strong> A Meshtastic® radio sends on licence-free bands that have limits by country. MeetChat sets the radio's region from your country (you can change it) and never raises its power or its airtime limits. If a radio is in licensed (amateur radio) mode, MeetChat doesn't send its encrypted messages on it, because amateur radio rules don't allow encryption; plain-text radio chats still work.</p>
+          <p><strong>Trademarks.</strong> Meshtastic® is a registered trademark of Meshtastic LLC. MeetChat is not affiliated with or endorsed by the Meshtastic project. MeetChat contains no Meshtastic code; it talks to the radio over its standard Bluetooth interface.</p>
+          <p><strong>Maps.</strong> Map data © OpenStreetMap contributors (ODbL). Tiles and style by OpenFreeMap, © OpenMapTiles. Maps drawn with MapLibre (BSD licence). All open-source licences are in the app: ⚙︎ Settings → About MeetChat.</p>
+        </div>
+        <figure>
+          <img src="img/about.jpg" alt="About MeetChat: emergencies, trademarks and open-source licences" loading="lazy">
+          <figcaption>⚙︎ Settings → About MeetChat.</figcaption>
+        </figure>
+      </div>
     </section>
   </main>
 </div>
